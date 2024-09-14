@@ -1,0 +1,47 @@
+version: "3.1"
+
+intents:
+  - provide_file_path
+  - read_file
+  - create_file
+  - update_file
+
+entities:
+  - file_path
+  - file_name
+  - file_content
+
+slots:
+  file_path:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: file_path
+  file_name:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: file_name
+  file_content:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: file_content
+
+responses:
+  utter_ask_file_path:
+    - text: "Please provide the file path."
+  utter_file_read:
+    - text: "Reading the file..."
+  utter_file_created:
+    - text: "File has been created successfully."
+  utter_file_updated:
+    - text: "File has been updated successfully."
+  utter_file_not_found:
+    - text: "File not found. Please provide a valid file path."
+
+actions:
+  - action_provide_file_path
+  - action_read_file
+  - action_create_file
+  - action_update_file
